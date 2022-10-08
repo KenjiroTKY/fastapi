@@ -5,10 +5,12 @@ import motor.motor_asyncio
 from bson import ObjectId
 from auth_utils import AuthJwtCsrf
 from fastapi import HTTPException
+import asyncio
 
 
 MONGO_API_KEY = config('MONGO_API_KEY')
 client = motor.motor_asyncio.AsyncIOMotorClient(MONGO_API_KEY)
+client.get_io_loop = asyncio.get_event_loop
 database = client.APP_DB
 collection_todo = database.todo
 collection_user = database.user
