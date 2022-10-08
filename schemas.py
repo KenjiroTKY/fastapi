@@ -27,3 +27,5 @@ class TodoBody(BaseModel):
 class SuccessMsg(BaseModel):
     message: str
     
+class Csrf(BaseModel):
+    csrf_token: str
